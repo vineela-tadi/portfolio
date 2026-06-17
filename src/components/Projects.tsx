@@ -97,9 +97,7 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest block mb-1">
-              03 // REPOSITORIES & SOURCE
-            </span>
+            
             <div className="flex items-center gap-2.5">
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 font-display">
                 Technical Projects
@@ -108,9 +106,7 @@ export default function Projects() {
                 Github API
               </span>
             </div>
-            <p className="text-xs text-zinc-400 mt-2 max-w-lg">
-              Dynamic software repositories directly connected to my GitHub account <code className="text-zinc-200">vineela-tadi</code> (excluding Bhimera-tasks).
-            </p>
+           
           </div>
 
           <button 

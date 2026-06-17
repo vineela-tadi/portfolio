@@ -12,27 +12,30 @@ export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [profilePhoto, setProfilePhoto] = useState<string>(() => {
-    return localStorage.getItem('portfolio_profile_photo') || '';
-  });
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        setProfilePhoto(base64String);
-        localStorage.setItem('portfolio_profile_photo', base64String);
-      };
-      reader.readAsDataURL(file);
+  const [profilePhoto] = useState<string>(() => {
+    try {
+      return localStorage.getItem('portfolio_profile_photo') || '';
+    } catch (e) {
+      return '';
     }
-  };
+  });
 
-  const triggerFileInput = () => {
-    fileInputRef.current?.click();
-  };
+  useEffect(() => {
+    if (profilePhoto && profilePhoto.startsWith('data:image')) {
+      fetch('/api/save-photo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: profilePhoto })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log('Saved profile photo to server disk successfully.');
+        }
+      })
+      .catch(err => console.error('Error saving profile photo to server:', err));
+    }
+  }, [profilePhoto]);
 
   const roles = [
     'Software Developer',
@@ -255,46 +258,23 @@ export default function Hero() {
 
         </div>
 
-        {/* Hero Right Content (Profile Photo with hover details) */}
+        {/* Hero Right Content (Profile Photo with permanent display) */}
         <div className="col-span-1 lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
           <div className="relative group">
             {/* Glowing blur effects behind the circular photo */}
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-25 blur-xl group-hover:opacity-45 transition duration-500" />
             
-            {/* Circular image wrapper with light border and shadow + Dynamic Custom Photo Upload */}
+            {/* Circular image wrapper with light border and shadow */}
             <div 
-              onClick={triggerFileInput}
-              className="relative w-64 h-64 sm:w-80 h-80 rounded-full overflow-hidden border-2 border-zinc-800/85 group-hover:border-purple-500/80 shadow-2xl transition-all duration-500 hover:scale-[1.03] cursor-pointer group/avatar"
-              title="Click here to upload your own profile photo!"
+              className="relative w-64 h-64 sm:w-80 h-80 rounded-full overflow-hidden border-2 border-zinc-800/85 group-hover:border-purple-500/80 shadow-2xl transition-all duration-500 hover:scale-[1.03]"
             >
               <img 
                 src={profilePhoto || avatarImg} 
                 alt={CANDIDATE_NAME} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500"
                 referrerPolicy="no-referrer"
               />
-              
-              {/* Dynamic Camera upload overlay */}
-              <div className="absolute inset-0 bg-black/65 opacity-0 group-hover/avatar:opacity-100 flex flex-col items-center justify-center gap-2 transition-all duration-300">
-                <div className="p-3 rounded-full bg-purple-650 text-white shadow-lg border border-purple-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <span className="text-[10px] font-mono font-bold text-zinc-100 tracking-wider">TAP TO UPLOAD PHOTO</span>
-                <span className="text-[8px] font-mono text-zinc-400">PNG / JPG / WEBP</span>
-              </div>
             </div>
-
-            {/* Hidden Photo File Input */}
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              onChange={handlePhotoUpload} 
-              accept="image/*" 
-              className="hidden" 
-            />
 
             {/* Float Badge */}
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-zinc-950/90 border border-zinc-800 px-4 py-2 rounded-xl backdrop-blur-md flex items-center gap-2 shadow-xl whitespace-nowrap">

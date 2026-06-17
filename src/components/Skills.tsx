@@ -59,9 +59,7 @@ export default function Skills() {
               My Technical Skills
             </h2>
           </div>
-          <p className="text-xs text-zinc-400 max-w-xs leading-relaxed">
-            A precise outline of my software capability profile, covering programming languages, web stacks, and databases.
-          </p>
+         
         </div>
 
         {/* Categories Tab Selector */}

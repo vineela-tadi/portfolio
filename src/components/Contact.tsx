@@ -36,17 +36,12 @@ export default function Contact() {
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest block mb-1">
-              06 // CONTACT
-            </span>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 font-display">
               Get In Touch
             </h2>
           </div>
           <div className="h-0.5 bg-zinc-850 flex-1 mx-8 hidden md:block" />
-          <p className="text-xs text-zinc-500 font-mono text-left md:text-right">
-            [ AVAILABLE FOR WORK ]
-          </p>
+          
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

@@ -14,9 +14,7 @@ export default function Experience() {
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest block mb-1">
-              04 // TIMELINE
-            </span>
+           
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 font-display">
               Internship Experience
             </h2>
