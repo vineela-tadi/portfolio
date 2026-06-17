@@ -4,7 +4,7 @@ import { Briefcase, GraduationCap } from 'lucide-react';
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-[#060608] relative border-b border-zinc-900/60 font-sans">
+    <section id="experience" className="py-14 bg-[#060608] relative border-b border-zinc-900/60 font-sans">
       {/* Dynamic ambient decoration */}
       <div className="absolute top-1/2 right-10 w-80 h-80 bg-purple-600/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
@@ -20,9 +20,7 @@ export default function Experience() {
             </h2>
           </div>
           <div className="h-0.5 bg-zinc-850 flex-1 mx-8 hidden md:block" />
-          <p className="text-xs text-zinc-400 max-w-xs leading-relaxed">
-            Professional industry practice paired with academic degree milestones.
-          </p>
+          
         </div>
 
         {/* Layout optimized for Internship and Education side-by-side */}

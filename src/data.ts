@@ -4,7 +4,7 @@ export const CANDIDATE_NAME = "Tadi Veenila Satya";
 export const CANDIDATE_LOCATION = "Visakhapatnam, India";
 export const CANDIDATE_TITLE = "Aspiring Software Developer";
 
-export const CAREER_OBJECTIVE = "Aspiring Software Developer and Computer Science student specializing in Artificial Intelligence with strong foundations in Python, Java, and Full Stack Web Development. Seeking an opportunity to apply technical and problem-solving skills in software development.";
+export const CAREER_OBJECTIVE = "Aspiring Software Developer and Computer Science student specializing in Artificial Intelligence, with strong foundations in Python, Java, Data Structures, and Full Stack Web Development. Passionate about building efficient software solutions and applying technical, analytical, and problem-solving skills to contribute to innovative projects and organizational growth.";
 
 export const SKILLS_DATA: Skill[] = [
   // Languages
@@ -38,14 +38,14 @@ export const SKILLS_DATA: Skill[] = [
 export const PROJECTS_DATA: Project[] = [
   {
     id: 'building-plan',
-    title: 'Apna Ghar (Building Plan Generator)',
-    description: 'An AI-powered virtual architect and building plan generator that outputs customized structural house designs, conceptual interior and exterior renderings, layout plans, and Vastu compliance guidance.',
-    problemSolved: 'Simplifies domestic construction drafting by supplying customized, professional architectural schematics and layout solutions instantly with AI.',
+    title: 'Apna Ghar - Building Plan Generator',
+    description: 'AI-powered house planning platform that generates layouts, designs, and construction guidance.',
+    problemSolved: '',
     techStack: ['React', 'Next.js', 'Tailwind CSS', 'Vercel AI', 'Node.js'],
     keyFeatures: [
-      'Generative Architect: Generates customizable building conceptual structures from user prompts.',
-      'Vastu-Compliant Analytics: Ensures fundamental structures align with historical design guidelines.',
-      'Instant Calculations: Supplies convenient estimators to calculate draft materials and overall construction cost targets.'
+      'AI House Plans',
+      'Cost Estimation',
+      'Vastu Guidance'
     ],
     githubUrl: 'https://github.com/vineela-tadi/Building-Plan',
     liveUrl: 'https://building-plan-nine.vercel.app',
@@ -54,14 +54,14 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: 'ecommerce-zentrova',
-    title: 'Zentrova - E-Commerce Marketplace',
-    description: 'A modern, premium digital marketplace showcasing high-performance electronic hardware, apparel, beauty catalogs, and accessories built on responsive frameworks.',
-    problemSolved: 'Resolves cart-friction in web-based commerce setups by optimizing items filtering, responsive searching, catalog adjustments, and payment flows.',
+    title: 'Giftify AI - Smart Gift Marketplace',
+    description: 'AI-powered gifting platform that recommends perfect gifts based on occasion, relationship, and budget.',
+    problemSolved: '',
     techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'State Management'],
     keyFeatures: [
-      'Interactive Shopping Cart: Complete reactive add-to-cart operations with quantity edits.',
-      'Smart Categories: Search query filters allowing multi-item discovery seamlessly across devices.',
-      'Polished Layout Dynamics: Smooth UI sliding, hover depth, and elegant transitions.'
+      'AI Gift Finder',
+      'Occasion-Based Shopping',
+      'Gift Reminders'
     ],
     githubUrl: 'https://github.com/vineela-tadi/Ecommerce-Zentrova',
     liveUrl: 'https://ecommerce-zentrova.vercel.app',
@@ -71,13 +71,13 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: 'beautyconnect---project1',
     title: 'BeautyConnect - Salon Scheduler',
-    description: 'A responsive beauty scheduler website detailing dynamic treatment menus, beautiful portfolio layouts, service tiers, and interactive reservation systems.',
-    problemSolved: 'Connects boutique salons with active clients through reliable appointment reserving panels and service transparency grids.',
+    description: 'Responsive salon booking platform with appointment scheduling, service catalogs, and modern reservation management.',
+    problemSolved: '',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Vite', 'Modern Design'],
     keyFeatures: [
-      'Appointment Reserving: User-friendly calendar panel for selecting and securing stylist sessions.',
-      'Treatment Grid and Pricing: High-contrast tables showing clear comparison options.',
-      'Professional Portfolio Gallery: Eye-catching photography carousels showcasing beauty creations.'
+      'Appointment Booking',
+      'Service Catalog',
+      'Portfolio Gallery'
     ],
     githubUrl: 'https://github.com/vineela-tadi/BeautyConnect---project1',
     liveUrl: 'https://beauty-connect-project1.vercel.app',
@@ -87,12 +87,13 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: 'green-plantation-to-reduce-pollution',
     title: 'Green Plantation - Eco Tracker',
-    description: 'An interactive environmental monitoring hub designed to map botanical distribution registries and coordinate tree plantation strategies.',
-    problemSolved: 'Enables organized environmental volunteer networks by providing detailed logs for classifying botanical categories and recording local plantings.',
+    description: 'Environmental platform for tracking tree plantations and volunteer activities.',
+    problemSolved: '',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Flask', 'SQLite'],
     keyFeatures: [
-      'Botanical Directory: Organizes classifications and local climate guidelines.',
-      'Citizen Portal: Allows community members to record their plantation achievements in dynamic reports.'
+      'Plantation Tracking',
+      'GPS Logging',
+      'Volunteer Portal'
     ],
     githubUrl: 'https://github.com/vineela-tadi/Green-Plantation-to-reduce-pollution',
     liveUrl: 'https://github.com/vineela-tadi/Green-Plantation-to-reduce-pollution',
@@ -102,12 +103,13 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: 'todo-list',
     title: 'Smart Task Planner',
-    description: 'A lightweight productivity manager featuring clean state controls, prioritization flags, and secure client-side storage configurations.',
-    problemSolved: 'Assists student teams in managing and cataloging programming sub-tasks without setup friction.',
+    description: 'Simple productivity application for organizing tasks and tracking progress.',
+    problemSolved: '',
     techStack: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
     keyFeatures: [
-      'Local Storage Syncing: Remembers item states and progress markers across offline browser refreshes.',
-      'Tick Checklist Operations: Seamless transition animations on completing or editing entries.'
+      'Task Management',
+      'Local Storage',
+      'Progress Tracking'
     ],
     githubUrl: 'https://github.com/vineela-tadi/Todo-list',
     liveUrl: 'https://github.com/vineela-tadi/Todo-list',

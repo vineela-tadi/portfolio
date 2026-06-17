@@ -4,7 +4,7 @@ import { Award, Trophy, Sparkles } from 'lucide-react';
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-24 bg-[#09090b] relative border-b border-zinc-900/60 font-sans">
+    <section id="certifications" className="py-14 bg-[#09090b] relative border-b border-zinc-900/60 font-sans">
       {/* Visual background glows */}
       <div className="absolute top-1/4 left-1/4 translate-x-12 w-80 h-80 bg-purple-600/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 -translate-x-12 w-80 h-80 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
@@ -14,17 +14,13 @@ export default function Certifications() {
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-widest block mb-1">
-              04 // CREDENTIALS & HONORS
-            </span>
+            
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 font-display">
               Endorsements & Achievements
             </h2>
           </div>
           <div className="h-0.5 bg-zinc-850 flex-1 mx-8 hidden md:block" />
-          <p className="text-xs text-zinc-400 max-w-xs leading-relaxed">
-            Verified academic accomplishments, technical certifications, and university achievements.
-          </p>
+          
         </div>
 
         {/* Unified 3-Column Grid */}

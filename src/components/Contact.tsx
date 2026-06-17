@@ -26,7 +26,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#060608] relative font-sans">
+    <section id="contact" className="py-14 bg-[#060608] relative font-sans">
       {/* Decorative gradient glow line */}
       <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 translate-y-12 w-80 h-80 bg-purple-500/5 blur-[100px] rounded-full pointer-events-none animate-pulse-slow" />

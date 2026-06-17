@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, FileText, Send, Terminal, Sparkles } from 'lucide-react';
 import { CANDIDATE_NAME, CANDIDATE_TITLE, CANDIDATE_LOCATION, CAREER_OBJECTIVE } from '../data';
 // @ts-ignore
-import avatarImg from '../assets/images/professional_avatar_tavi_1781586944957.jpg';
+import avatarImg from '../assets/images/image.jpeg';
 
 export default function Hero() {
   const [typedText, setTypedText] = useState('');
@@ -11,31 +11,6 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const [profilePhoto] = useState<string>(() => {
-    try {
-      return localStorage.getItem('portfolio_profile_photo') || '';
-    } catch (e) {
-      return '';
-    }
-  });
-
-  useEffect(() => {
-    if (profilePhoto && profilePhoto.startsWith('data:image')) {
-      fetch('/api/save-photo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: profilePhoto })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          console.log('Saved profile photo to server disk successfully.');
-        }
-      })
-      .catch(err => console.error('Error saving profile photo to server:', err));
-    }
-  }, [profilePhoto]);
 
   const roles = [
     'Software Developer',
@@ -190,7 +165,7 @@ export default function Hero() {
     <section 
       ref={containerRef}
       id="home" 
-      className="relative min-h-screen bg-[#060608] flex items-center pt-24 overflow-hidden font-sans border-b border-zinc-900/60"
+      className="relative min-h-[80vh] bg-[#060608] flex items-center pt-16 overflow-hidden font-sans border-b border-zinc-900/60"
     >
       {/* Decorative Blur Background Glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
@@ -199,7 +174,7 @@ export default function Hero() {
       {/* Grid Pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-8">
         
         {/* Hero Left Content */}
         <div className="col-span-1 lg:col-span-7 space-y-8 text-left order-2 lg:order-1">
@@ -269,7 +244,7 @@ export default function Hero() {
               className="relative w-64 h-64 sm:w-80 h-80 rounded-full overflow-hidden border-2 border-zinc-800/85 group-hover:border-purple-500/80 shadow-2xl transition-all duration-500 hover:scale-[1.03]"
             >
               <img 
-                src={profilePhoto || avatarImg} 
+                src={avatarImg} 
                 alt={CANDIDATE_NAME} 
                 className="w-full h-full object-cover transition-transform duration-500"
                 referrerPolicy="no-referrer"

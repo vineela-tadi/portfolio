@@ -18,9 +18,9 @@ const STATIC_FALLBACKS: GitHubRepo[] = [
   {
     id: 1,
     name: 'Building-Plan',
-    description: 'Apna Ghar is an AI-powered virtual architect that generates customized house designs, interior and exterior concepts, Vastu-based layouts, and construction cost estimates.',
+    description: 'AI-powered house planning platform that generates layouts, designs, and construction guidance.',
     html_url: 'https://github.com/vineela-tadi/Building-Plan',
-    language: 'TypeScript',
+    language: 'React',
     stargazers_count: 2,
     forks_count: 1,
     created_at: '2025-11-10T00:00:00Z',
@@ -29,9 +29,9 @@ const STATIC_FALLBACKS: GitHubRepo[] = [
   {
     id: 2,
     name: 'Ecommerce-Zentrova',
-    description: 'Zentrova is a modern e-commerce platform that offers electronics, fashion, and lifestyle products with a smooth checkout flow.',
+    description: 'AI-powered gifting platform that recommends perfect gifts based on occasion, relationship, and budget.',
     html_url: 'https://github.com/vineela-tadi/Ecommerce-Zentrova',
-    language: 'JavaScript',
+    language: 'React',
     stargazers_count: 3,
     forks_count: 0,
     created_at: '2025-12-01T00:00:00Z',
@@ -40,7 +40,7 @@ const STATIC_FALLBACKS: GitHubRepo[] = [
   {
     id: 3,
     name: 'BeautyConnect---project1',
-    description: 'A modern and responsive beauty salon website featuring beauty packages, pricing plans, and booking reservations.',
+    description: 'Responsive salon booking platform with appointment scheduling, service catalogs, and modern reservation management.',
     html_url: 'https://github.com/vineela-tadi/BeautyConnect---project1',
     language: 'HTML',
     stargazers_count: 1,
@@ -67,8 +67,11 @@ export default function Projects() {
       }
       const data: GitHubRepo[] = await response.json();
       
-      // Filter out 'Bhimera-tasks' strictly (case-insensitive)
-      const filtered = data.filter(repo => repo.name.toLowerCase() !== 'bhimera-tasks');
+      // Filter out 'Bhimera-tasks' and 'portfolio' strictly (case-insensitive)
+      const filtered = data.filter(repo => {
+        const nameLower = repo.name.toLowerCase();
+        return nameLower !== 'bhimera-tasks' && nameLower !== 'portfolio';
+      });
       
       setRepos(filtered);
     } catch (err: any) {
@@ -87,7 +90,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-24 bg-[#09090b] relative border-b border-zinc-900/60 font-sans">
+    <section id="projects" className="py-14 bg-[#09090b] relative border-b border-zinc-900/60 font-sans">
       {/* Subtle Ambient Background Glows */}
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 bg-purple-600/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
@@ -108,10 +111,11 @@ export default function Projects() {
             </div>
            
           </div>
+          <div className="h-0.5 bg-zinc-850 flex-1 mx-8 hidden md:block" />
 
           <button 
             onClick={fetchRepositories}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 hover:text-white transition-all hover:border-zinc-700/80"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 hover:text-white transition-all hover:border-zinc-700/80 shrink-0"
             title="Reload from GitHub API"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-purple-400' : ''}`} />
@@ -129,25 +133,25 @@ export default function Projects() {
 
         {/* Loading bone structures */}
         {loading ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-7xl mx-auto">
             {[1, 2].map((n) => (
-              <div key={n} className="p-8 rounded-2xl bg-zinc-900/10 border border-zinc-850/60 animate-pulse space-y-6">
-                <div className="h-5 bg-zinc-800 rounded-md w-1/3" />
-                <div className="space-y-2">
-                  <div className="h-3.5 bg-zinc-800 rounded-md w-full" />
-                  <div className="h-3.5 bg-zinc-800 rounded-md w-4/5" />
+              <div key={n} className="p-4 rounded-xl bg-zinc-900/10 border border-zinc-850/60 animate-pulse space-y-4">
+                <div className="h-4 bg-zinc-800 rounded-md w-1/3" />
+                <div className="space-y-1.5">
+                  <div className="h-3 bg-zinc-800 rounded-md w-full" />
+                  <div className="h-3 bg-zinc-800 rounded-md w-4/5" />
                 </div>
                 <div className="flex gap-2">
-                  <div className="h-4 bg-zinc-850 rounded w-12" />
-                  <div className="h-4 bg-zinc-850 rounded w-16" />
+                  <div className="h-3 bg-zinc-855 rounded w-10" />
+                  <div className="h-3 bg-zinc-855 rounded w-14" />
                 </div>
-                <div className="h-10 bg-zinc-850 rounded-xl w-full pt-4" />
+                <div className="h-8 bg-zinc-855 rounded-lg w-full pt-2" />
               </div>
             ))}
           </div>
         ) : (
-          /* Projects Cards Grid */
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          /* Projects Grid - Optimized to 2 columns on desktop & tighter layout mechanics */
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
             {repos.length === 0 ? (
               <div className="col-span-full text-center py-16 space-y-4">
                 <p className="text-zinc-500 text-sm font-mono">No repositories returned from GitHub</p>
@@ -164,56 +168,43 @@ export default function Projects() {
                 return (
                   <div 
                     key={repo.id} 
-                    className="p-8 rounded-2xl bg-zinc-900/10 hover:bg-zinc-900/30 border border-zinc-850 hover:border-purple-500/45 flex flex-col justify-between transition-all duration-300 group hover:shadow-xl hover:shadow-purple-950/5 relative"
+                    className="p-4 sm:p-5 rounded-xl bg-zinc-900/10 hover:bg-zinc-900/30 border border-zinc-850 hover:border-purple-500/40 flex flex-col justify-between transition-all duration-300 group hover:scale-[1.01] hover:shadow-lg hover:shadow-purple-950/5 relative text-left"
                   >
-                    <div className="space-y-6">
+                    <div className="space-y-3">
                       {/* Top Row: Title, language & Github Details */}
-                      <div className="flex justify-between items-start gap-4">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono tracking-wider font-bold text-purple-400 uppercase block">
+                      <div className="flex justify-between items-start gap-3">
+                        <div className="space-y-0.5">
+                          <span className="text-[8px] font-mono tracking-wider font-bold text-purple-400 uppercase block">
                             GitHub Repository
                           </span>
-                          <h3 className="text-xl font-extrabold text-zinc-100 font-display group-hover:text-purple-350 transition-colors break-words">
+                          <h3 className="text-base font-bold text-zinc-100 font-display group-hover:text-purple-350 transition-colors break-words">
                             {matchedMeta ? matchedMeta.title : repo.name}
                           </h3>
                         </div>
                         
                         {(matchedMeta?.techStack?.[0] || repo.language) && (
-                          <span className="text-[9px] font-mono font-bold bg-zinc-950 border border-zinc-900 text-purple-300 px-2.5 py-1 rounded shrink-0">
+                          <span className="text-[8px] font-mono font-bold bg-zinc-950 border border-zinc-900 text-purple-300 px-1.5 py-0.5 rounded shrink-0">
                             {matchedMeta?.techStack?.[0] || repo.language}
                           </span>
                         )}
                       </div>
 
                       {/* Brief Description */}
-                      <p className="text-xs text-zinc-400 leading-relaxed font-sans mt-2">
+                      <p className="text-xs text-zinc-400 leading-relaxed font-sans line-clamp-2">
                         {matchedMeta ? matchedMeta.description : (repo.description || "Computer Science study repository with dynamic logic processing, modular architecture, and structured layouts.")}
                       </p>
 
-                      {/* Problem Solved info if matched */}
-                      {matchedMeta?.problemSolved && (
-                        <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-900 space-y-1.5">
-                          <div className="flex items-center gap-1.5 text-[10px] uppercase font-mono font-bold text-purple-400">
-                            <Cpu className="w-3.5 h-3.5" />
-                            Core Problem Solved
-                          </div>
-                          <p className="text-[11px] text-zinc-350 leading-relaxed font-sans">
-                            {matchedMeta.problemSolved}
-                          </p>
-                        </div>
-                      )}
-
                       {/* Key Features bullet points if matches data */}
                       {matchedMeta?.keyFeatures && (
-                        <div className="space-y-2.5">
-                          <span className="text-[10px] uppercase font-mono font-bold text-zinc-500 tracking-wider block">
-                            Key Features & Capabilities
+                        <div className="space-y-1">
+                          <span className="text-[8px] uppercase font-mono font-bold text-zinc-500 tracking-wider block">
+                            Features
                           </span>
-                          <ul className="space-y-2">
-                            {matchedMeta.keyFeatures.map((feat, fidx) => (
-                              <li key={fidx} className="flex gap-2.5 items-start text-xs text-zinc-300 leading-relaxed">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 shrink-0 mt-0.5" />
-                                <span>{feat}</span>
+                          <ul className="space-y-1">
+                            {matchedMeta.keyFeatures.slice(0, 3).map((feat, fidx) => (
+                              <li key={fidx} className="flex gap-1.5 items-center text-[11px] text-zinc-300">
+                                <CheckCircle2 className="w-3 h-3 text-purple-400 shrink-0" />
+                                <span className="line-clamp-1">{feat}</span>
                               </li>
                             ))}
                           </ul>
@@ -222,9 +213,9 @@ export default function Projects() {
 
                       {/* Tech stack badges */}
                       {matchedMeta?.techStack && (
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {matchedMeta.techStack.map((tech) => (
-                            <span key={tech} className="text-[9px] font-mono text-zinc-400 bg-zinc-950 border border-zinc-900/60 px-2 py-0.5 rounded">
+                        <div className="flex flex-wrap gap-1 pt-0.5">
+                          {matchedMeta.techStack.slice(0, 4).map((tech) => (
+                            <span key={tech} className="text-[8px] font-mono text-zinc-400 bg-zinc-950 border border-zinc-900 px-1.5 py-0.5 rounded">
                               {tech}
                             </span>
                           ))}
@@ -232,38 +223,38 @@ export default function Projects() {
                       )}
 
                       {/* Stars, forks and timestamps from live API */}
-                      <div className="flex gap-4 text-[10px] font-mono text-zinc-500 pt-1 border-t border-zinc-900/40">
+                      <div className="flex gap-3 text-[8.5px] font-mono text-zinc-500 pt-1.5 border-t border-zinc-900/40">
                         <span className="flex items-center gap-1 hover:text-purple-400 cursor-default">
-                          <Star className="w-3.5 h-3.5 text-purple-400" />
+                          <Star className="w-3 h-3 text-purple-400" />
                           {repo.stargazers_count} stars
                         </span>
                         <span className="flex items-center gap-1 hover:text-purple-400 cursor-default">
-                          <GitFork className="w-3.5 h-3.5 text-zinc-500" />
+                          <GitFork className="w-3 h-3 text-zinc-500" />
                           {repo.forks_count} forks
                         </span>
                       </div>
                     </div>
 
                     {/* View on GitHub & Live Website Buttons */}
-                    <div className="pt-6 border-t border-zinc-900/60 mt-6 grid grid-cols-2 gap-3">
+                    <div className="pt-3 border-t border-zinc-900/50 mt-3 grid grid-cols-2 gap-2">
                       <a 
                         href={repo.html_url} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white transition-all text-xs font-semibold font-mono cursor-pointer"
+                        className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded bg-zinc-900 hover:bg-zinc-850 border border-zinc-805 hover:border-zinc-700 text-zinc-300 hover:text-white transition-all text-[11px] font-semibold font-mono cursor-pointer"
                         title="Open Github repository"
                       >
-                        <Github className="w-4 h-4 text-purple-400 group-hover:scale-105 transition-transform" />
-                        Code Base
+                        <Github className="w-3 h-3 text-purple-400" />
+                        Code
                       </a>
                       <a 
                         href={matchedMeta?.liveUrl || repo.homepage || `https://vineela-tadi.github.io/${repo.name}`} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-gradient-to-r from-purple-950/40 to-blue-950/40 hover:from-purple-900/40 hover:to-blue-900/40 border border-purple-550/35 hover:border-purple-450 text-zinc-200 hover:text-white transition-all text-xs font-semibold font-mono cursor-pointer"
+                        className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded bg-gradient-to-r from-purple-950/20 to-blue-950/20 hover:from-purple-900/20 hover:to-blue-900/20 border border-purple-550/15 hover:border-purple-450 text-zinc-200 hover:text-white transition-all text-[11px] font-semibold font-mono cursor-pointer"
                         title="Visit deployed web application"
                       >
-                        <Globe className="w-4 h-4 text-blue-400 group-hover:scale-105 transition-transform" />
+                        <Globe className="w-3 h-3 text-blue-400" />
                         Live Web ↗
                       </a>
                     </div>

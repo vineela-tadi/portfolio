@@ -35,7 +35,7 @@ function generateResume() {
   const photoX = 595.28 - 45 - photoW; // Right side
   const photoY = 35;
 
-  const photoPath = path.join(process.cwd(), 'src', 'assets', 'images', 'professional_avatar_tavi_1781586944957.jpg');
+  const photoPath = path.join(process.cwd(), 'src', 'assets', 'images', 'image.jpeg');
   if (fs.existsSync(photoPath)) {
     // Elegant slate grey frame border around the photo
     doc.rect(photoX - 0.5, photoY - 0.5, photoW + 1, photoH + 1)

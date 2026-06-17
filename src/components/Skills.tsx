@@ -46,7 +46,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-24 bg-[#060608] relative border-b border-zinc-900/60 font-sans">
+    <section id="skills" className="py-14 bg-[#060608] relative border-b border-zinc-900/60 font-sans">
       {/* Visual background glow */}
       <div className="absolute top-1/4 right-1/4 translate-x-12 w-80 h-80 bg-purple-500/5 blur-[100px] rounded-full pointer-events-none" />
 

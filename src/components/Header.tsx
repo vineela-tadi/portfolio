@@ -71,7 +71,7 @@ export default function Header() {
             : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-12 md:h-14 flex items-center justify-between">
           {/* Logo Brand */}
           <a
             href="#"
@@ -82,8 +82,8 @@ export default function Header() {
             className="flex items-center group cursor-pointer"
           >
             <div className="flex flex-col">
-              <span className="text-base font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 font-display uppercase leading-none">
-                PORTFOLIO
+              <span className="text-base font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 font-display leading-none">
+                Portfolio
               </span>
             </div>
           </a>

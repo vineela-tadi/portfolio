@@ -112,24 +112,8 @@ export default function ThemeSwitcher() {
           </div>
         )}
 
-        {/* Double-action Switch Trigger Widget */}
-        <div className="flex bg-zinc-950/90 border border-zinc-800 rounded-2xl p-1 shadow-2xl backdrop-blur-md items-center gap-1">
-          {/* Quick Sun/Moon Direct Toggle Button */}
-          <button
-            onClick={toggleQuickDarkLight}
-            className="flex items-center justify-center p-2.5 rounded-xl hover:bg-zinc-900 text-zinc-400 hover:text-white transition-all duration-350 cursor-pointer"
-            title={activeTheme === 'theme-light' ? 'Switch to Dark Theme' : 'Switch to Light Theme'}
-          >
-            {activeTheme === 'theme-light' ? (
-              <Moon className="w-5 h-5 text-purple-400 animate-pulse" />
-            ) : (
-              <Sun className="w-5 h-5 text-amber-400 animate-spin-slow" />
-            )}
-          </button>
-
-          <div className="w-[1px] h-6 bg-zinc-800 mx-0.5" />
-
-          {/* Palette Selector Trigger */}
+        {/* Floating Theme Button / Palette Selector Trigger */}
+        <div className="flex bg-zinc-950/90 border border-zinc-800 rounded-2xl p-1 shadow-2xl backdrop-blur-md items-center shadow-purple-950/10">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all duration-300 cursor-pointer ${
